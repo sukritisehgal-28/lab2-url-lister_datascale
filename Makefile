@@ -6,7 +6,7 @@ USER=$(shell whoami)
 
 export HADOOP_CLASSPATH=/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar
 
-WountCount1.jar: WordCount1.java
+WordCount1.jar: WordCount1.java
 	hadoop com.sun.tools.javac.Main WordCount1.java
 	jar cf WordCount1.jar WordCount1*.class	
 	-rm -f WordCount1*.class
