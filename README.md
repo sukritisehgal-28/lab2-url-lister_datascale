@@ -46,6 +46,8 @@ It's completely reasonable to get the Python version working first and then try 
 
 You should develop a program called `UrlCount.java` that counts the URLs in the WikiPedia pages (URLs are in the format href="*url_here*"). You'll create a `UrlCount` class by starting with a copy of WordCount1. In this program, you'll modify the Mapper to extract URL references from the documents in the input directory. This is more an exercise in using Java than using Hadoop, but it's a good preparatory step for our next assignment.
 
+You should only output URL's that have more than 5 references (i.e. where the count of the URL's would be > 5). Although this sounds like a simple change, there are some implications you'll need to discuss in your solution writeup (see below).
+
 This tutorial (http://www.vogella.com/tutorials/JavaRegularExpressions/article.html ) provides information on using the Java Regular Expression classes (`java.util.regex.Matcher and java.util.regex.Pattern`). It also provides an implementation of a class `LinkGetter` that will, when given a URL, downloads the data from the URL and produce a `List<String>` of the URL's contained therein.
 
 You're going to modify that code to *not* download a URL -- instead, you'll provide a `String` (just like in WordCount) and extract the URL references from each string. Your mapper will then output URL references and the count of those references in the input file, more or less like WordCount.
@@ -86,6 +88,16 @@ time hadoop jar....
 
 You should create a file `SOLUTION.md` that briefly describes your solution and what software is needed for it to run. You should indicate what resources you used and anyone you worked with as described in the course collaboration policy.
 
+Note that there should be four URL's that appear more than 5 times. Your output should match the following.
+```
+wiki/Doi_(identifier)  17
+/wiki/ISBN_(identifier) 18
+/wiki/MapReduce 6
+mw-data:TemplateStyles:r951705291       107
+```
+
+The Java WordCount implementation used a `Combiner` to improve efficiency, but that may cause problems for this application and produce a different output. Explain why this would be the case (even if you didn't implement the Java version).
+
 You should also include a comparison of the 2-node and 4-node execution time. Discuss the execution times and any suprising outcomes.
 
-Commit your code by the due state with the `Solution.md` file.
+Commit your code by the due state with the `SOLUTION.md` file and push it to Github. Make certain you can see your results on the Github website.
