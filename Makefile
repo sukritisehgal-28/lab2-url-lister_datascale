@@ -4,10 +4,10 @@ USER=$(shell whoami)
 ## Configure the Hadoop classpath for the GCP dataproc enviornment
 ##
 
-export HADOOP_CLASSPATH=/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar
+HADOOP_CLASSPATH=$(shell hadoop classpath)
 
 WordCount1.jar: WordCount1.java
-	hadoop com.sun.tools.javac.Main WordCount1.java
+	javac -classpath $(HADOOP_CLASSPATH) -d ./ WordCount1.java
 	jar cf WordCount1.jar WordCount1*.class	
 	-rm -f WordCount1*.class
 
@@ -22,9 +22,21 @@ filesystem:
 	-hdfs dfs -mkdir /user
 	-hdfs dfs -mkdir /user/$(USER)
 
+run: WordCount1.jar
+	-rm -rf output
+	hadoop jar WordCount1.jar WordCount1 input output
+
+
+##
+## You may need to change the path for this depending
+## on your Hadoop / java setup
+##
+HADOOP_V=3.2.1
+STREAM_JAR = /usr/local/hadoop-$(HADOOP_V)/share/hadoop/tools/lib/hadoop-streaming-$(HADOOP_V).jar
 
 stream:
-	hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
+	-rm -rf stream-output
+	hadoop jar $(STREAM_JAR) \
 	-mapper Mapper.py \
 	-reducer Reducer.py \
 	-file Mapper.py -file Reducer.py \
