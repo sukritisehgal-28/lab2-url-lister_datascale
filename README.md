@@ -15,7 +15,7 @@ You will need to use `git` throughout this lab. You're going to first develop yo
 We recommend using the the [https://coding.csel.io](https://coding.csel.io) environment for the first steps
 of this project.
 
-The Coding environment has a pre-configured Hadoop-3.2.1 environment prepared
+The Coding environment has a pre-configured Hadoop-3.2.2 environment prepared
 if you use the CSCI 4253/5253 programming environment.
 
 To test and evaluate your system, we download two WikiPedia articles. Hadoop accesses files from the HDFS file system, and we've provided a `make prepare` rule to copy the wikipedia articles to HDFS in the `input` directory. When running on the Coding environment, this will use files in your local directory; when using the `dataproc` environment, this will use files on the Hadoop filesystem (HDFS)
