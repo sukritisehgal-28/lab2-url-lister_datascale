@@ -88,10 +88,11 @@ You should create a file `SOLUTION.md` that briefly describes your solution and 
 
 Note that there should be four URL's that appear more than 5 times. Your output should match the following.
 ```
-wiki/Doi_(identifier)  17
+#cite_note-releases-2 7
+/wiki/Doi_(identifier) 17
 /wiki/ISBN_(identifier) 18
 /wiki/MapReduce 6
-mw-data:TemplateStyles:r951705291       107
+mw-data:TemplateStyles:r999302996 110
 ```
 
 The Java WordCount implementation used a `Combiner` to improve efficiency, but that may cause problems for this application and produce a different output. Explain why this would be the case (even if you didn't implement the Java version).
