@@ -3,11 +3,14 @@ USER=$(shell whoami)
 ##
 ## Configure the Hadoop classpath for the GCP dataproc enviornment
 ##
-
+SHELL := /bin/bash
+USER := $(shell whoami)
 HADOOP_CLASSPATH=$(shell hadoop classpath)
 
+JAVA_RELEASE ?= 11
+JAVAC_FLAGS := --release $(JAVA_RELEASE)
 WordCount1.jar: WordCount1.java
-	javac -classpath $(HADOOP_CLASSPATH) -d ./ WordCount1.java
+	javac $(JAVAC_FLAGS) -classpath $(HADOOP_CLASSPATH) -d ./ WordCount1.java
 	jar cf WordCount1.jar WordCount1*.class	
 	-rm -f WordCount1*.class
 
@@ -32,7 +35,7 @@ run: WordCount1.jar
 ## on your Hadoop / java setup
 
 UrlCount.jar: UrlCount.java
-	javac -classpath $(HADOOP_CLASSPATH) -d ./ UrlCount.java
+	javac $(JAVAC_FLAGS) -classpath $(HADOOP_CLASSPATH) -d ./ UrlCount.java
 	jar cf UrlCount.jar UrlCount*.class
 	-rm -f UrlCount*.class
 
