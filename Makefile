@@ -30,6 +30,19 @@ run: WordCount1.jar
 ##
 ## You may need to change the path for this depending
 ## on your Hadoop / java setup
+
+UrlCount.jar: UrlCount.java
+	javac -classpath $(HADOOP_CLASSPATH) -d ./ UrlCount.java
+	jar cf UrlCount.jar UrlCount*.class
+	-rm -f UrlCount*.class
+
+run-url: UrlCount.jar
+	-hdfs dfs -rm -r -f url-output
+	hadoop jar UrlCount.jar UrlCount input url-output
+	hdfs dfs -cat url-output/part-* | head -50
+
+
+
 ##
 HADOOP_V=3.3.4
 STREAM_JAR = /usr/local/hadoop-$(HADOOP_V)/share/hadoop/tools/lib/hadoop-streaming-$(HADOOP_V).jar
