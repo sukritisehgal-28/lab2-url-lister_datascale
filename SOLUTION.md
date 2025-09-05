@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Lab 2 — UrlCount (Hadoop MapReduce)
 
 ## What this does
@@ -27,6 +28,25 @@ hadoop fs -cat url-output/part-* | sort -k2,2nr | head -20
 - **Elapsed:** 60 seconds
 
 **Top 20 (>5):**
+
+mw-data:TemplateStyles:r1238218222      121
+mw-data:TemplateStyles:r1295599781      33
+/wiki/Doi_(identifier)  18
+/wiki/ISBN_(identifier) 18
+/wiki/S2CID_(identifier)        14
+mw-data:TemplateStyles:r886049734       12
+/wiki/MapReduce 7
+mw-data:TemplateStyles:r1129693374      7
+/wiki/Google_File_System        6
+
+
+=======
+
+### 4-worker Timing & Output
+
+- **Elapsed:** 57 seconds
+
+**Top 20 (>5):**
 ```
 mw-data:TemplateStyles:r1238218222	121
 mw-data:TemplateStyles:r1295599781	33
@@ -37,4 +57,4 @@ mw-data:TemplateStyles:r886049734	12
 /wiki/MapReduce	7
 mw-data:TemplateStyles:r1129693374	7
 /wiki/Google_File_System	6
-```
+
