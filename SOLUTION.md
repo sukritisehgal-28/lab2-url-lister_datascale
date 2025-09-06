@@ -47,7 +47,7 @@ hadoop fs -cat url-output/part-* | sort -k2,2nr | head -20
 - **Elapsed:** 60 seconds
 
 **Top 20 (>5):**
-
+```
 mw-data:TemplateStyles:r1238218222      121
 mw-data:TemplateStyles:r1295599781      33
 /wiki/Doi_(identifier)  18
@@ -58,14 +58,14 @@ mw-data:TemplateStyles:r886049734       12
 mw-data:TemplateStyles:r1129693374      7
 /wiki/Google_File_System        6
 
-
+```
 
 ### 4-worker Timing & Output
 
 - **Elapsed:** 57 seconds
 
 **Top 20 (>5):**
-
+```
 mw-data:TemplateStyles:r1238218222	121
 mw-data:TemplateStyles:r1295599781	33
 /wiki/Doi_(identifier)	18
@@ -75,7 +75,7 @@ mw-data:TemplateStyles:r886049734	12
 /wiki/MapReduce	7
 mw-data:TemplateStyles:r1129693374	7
 /wiki/Google_File_System	6
-
+```
 
 ##ANALYSIS 
 The 4-worker cluster completed the task slightly faster (**57s vs 60s**). This is expected as additional workers increase parallelism, which allows Hadoop to process data to be processed; however, for small inputs, the improvement is average. Ours is not that much faster because hadoop is doing alot of different jobs at once, also the difference is small due to the small data size or overhead. 
